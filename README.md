@@ -1,6 +1,6 @@
 ## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
 ## Back-end con Tecnologías de Código Abierto: **SPRING**
-> Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación completa realizada con Angular (v11) y Spring (5v), utilizando la programación asíncrona, 
+> Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación completa realizada con Angular (v11) y Spring (v5), utilizando la programación asíncrona, 
 funcionando conjuntamente con un Front-end y varios Back-end
 
 ### Tecnologías necesarias
