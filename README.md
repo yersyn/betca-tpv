@@ -10,7 +10,7 @@ funcionando conjuntamente con un Front-end y varios Back-end
 * Front-end-angular: 
 * Back-end-user:
 * Back-end-core:
-
+ 
 ### :gear: Instalación del proyecto
 1. Clonar los repositorio en tu equipo, **mediante consola**:
 ```sh
