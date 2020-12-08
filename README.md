@@ -68,7 +68,8 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 ![](./docs/betca-tpv.png)
 
 ### Arquitectura del Front-end: Angular
-![](./docs/front-end-architecture.png)
+![](docs/front-end-folders.png)
+![](docs/front-end-modules.png)
 ### Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
 
 ### Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
