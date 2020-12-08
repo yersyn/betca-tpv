@@ -68,8 +68,60 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 ![](./docs/betca-tpv.png)
 
 ### Arquitectura del Front-end: Angular
+#### Carpetas
 ![](docs/front-end-folders.png)
+#### Módulos
 ![](docs/front-end-modules.png)
+#### Enrutamiento y seguridad
+Hemos decidido realizar carga perezosa de los módulos, y para ello se delega al módulo de rutas la carga de los sub-módulos,
+ en el momento que el usuario elige una sub-ruta.   
+ 
+Para la seguridad, se ha implementado uno genérico (_RoleGuardService_), se configura en el propio enrutamiento los roles permitidos,
+ y este a través de servicio de autenticación (_AuthService_) comprueba el rol actual del usuario, remitiendo a la página principal
+  si este no tuviera el rol requerido.
+
+```typescript
+const routes: Routes = [
+  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', loadChildren: () => import('./home/home.module').then(module => module.HomeModule)},
+  {path: 'shop', loadChildren: () => import('./shop/shop.module').then(module => module.ShopModule)}
+  // {path: 'home', component: HomeComponent},  // eager load
+  // {path: 'shop', component: ShopComponent}   // eager load
+];
+@NgModule({imports: [RouterModule.forRoot(routes)],exports: [RouterModule]})
+export class AppRoutingModule {}
+```
+
+```typescript
+const routes: Routes = [
+  {path: '', component: HomeComponent, children: []}
+];
+@NgModule({imports: [RouterModule.forChild(routes)],exports: [RouterModule]})
+export class HomeRoutingModule {}
+```
+
+```typescript
+const routes: Routes = [
+  {
+    path: '', // 'shop' to forRoot
+    component: ShopComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: [Role.ADMIN, Role.MANAGER, Role.OPERATOR]},
+    children: [ // or path: shop/articles
+      {path: 'articles', component: ArticlesComponent},
+      {path: 'cashier-closed', component: CashierClosedComponent},
+      {path: 'cashier-opened', component: CashierOpenedComponent},
+      {path: 'providers', component: ProvidersComponent},
+      {path: 'tickets', component: TicketsComponent},
+    ]
+  }
+];
+@NgModule({imports: [RouterModule.forChild(routes)], exports: [RouterModule]})
+export class ShopRoutingModule {}
+```
+
+
+
 ### Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
 
 ### Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
