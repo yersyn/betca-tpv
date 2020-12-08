@@ -72,7 +72,34 @@ actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la ba
 ![](docs/front-end-folders.png)
 #### Módulos
 ![](docs/front-end-modules.png)
-#### Enrutamiento y seguridad
+#### Seguridad
+
+Se plantea en dos procesos:
+
+En primer lugar, se debe conseguir un API Key o token de tipo Json Web Token (JWT), accediendo al end-point `POST /users/token` mediante Basic Auth. Para ello se envía en la cabecera las credenciales (Authorization).
+Un token JWT está formado por tres partes:
+* Header. Se define el tipo.
+* Payload. Se establecen los datos que queramos que queden almacenados en el token, como el proveedor, el usuario, fecha
+ de expiración… y los privilegios, o en nuestro caso, el rol del usuario. Esta información va codificada y firmada, pero no encriptada, y por lo tanto es una información pública y visible.
+* Signature. Es la firma, que depende de una clave secreta, para saber si el contenido de Payload es válido.
+> Authorization = Basic \<user>:\<pass><sub>Base64</sub>  
+> Authorization = Bearer \<header><sub>Base64</sub> .\<payload><sub>Base64</sub> .\<signature><sub>Base64</sub>
+
+Justo abajo os presentamos un token válido:
+```json
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE2MDc0NDk2NzYsInJvbGUiOiJBRE1JTiIsImlzcyI6Im1pdy5qd3QuaXNzdWVyIiwibmFtZSI6ImFkbWluIiwiZXhwIjoxNjA3NDUzMjc2LCJpYXQiOjE2MDc0NDk2NzYsInVzZXIiOiI2In0.iFeIfrslgdwA53dv7-vg27GT7bcEINnqSKJsQJNB4rc
+```
+
+Tenéis más documentación de JWT (https://jwt.io).   
+Para su tratamiento utilizaremos la librerías de _auth0_ (https://auth0.com) para Angular.
+
+Se han desarrollado dos clases, _AuthService_, que nos realiza el login, y nos facilita métodos para conocer el alcance de 
+privilegios del usuario, además de guardar el token. Y también tenemos _TokenInterceptor_, 
+que añade automáticamente en cabecera el token, siempre que exista. Ambas clases se encuentran en el módulo _core_.
+
+![](./docs/front-end-security.png)
+
+#### Enrutamiento con seguridad
 Hemos decidido realizar carga perezosa de los módulos, y para ello se delega al módulo de rutas la carga de los sub-módulos,
  en el momento que el usuario elige una sub-ruta.   
  
