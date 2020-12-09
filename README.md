@@ -147,7 +147,30 @@ const routes: Routes = [
 export class ShopRoutingModule {}
 ```
 
+#### Código
 
+##### Uso del Pipe `async`
+
+```html
+<p><button mat-raised-button (click)=requestSync() >Sync </button> {{sync}}</p>
+<p><button mat-raised-button (click)=requestAsync()>Async</button> {{asyn | async}}</p>
+```
+```typescript
+export class InputOverviewExample {
+  sync: string;
+  asyn: Observable<string>;
+  requestSync(): void {
+    this.serviceMock()
+    .subscribe(item => this.sync = item);
+  }
+  requestAsync(): void {
+     this.asyn = this.serviceMock();
+  }
+  serviceMock(): Observable<string> {
+    return of('Result');
+  }
+}
+```
 
 ### Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
 
