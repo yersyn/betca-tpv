@@ -8,12 +8,11 @@
 `Java` `Maven` `Spring-Boot` `Reactor` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `Travis-CI` `Sonarcloud` `Better Code Hub` `Heroku`
 
 ## Estado del código
-* Front-end-angular: [![Angular - Build](https://github.com/miw-upm/betca-tpv-angular/workflows/Angular%20-%20Build/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
-* Back-end-user:[![TPV User](https://github.com/miw-upm/betca-tpv-user/workflows/TPV%20User/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
-* Back-end-core:[![CI - Test](https://github.com/miw-upm/betca-tpv-core/workflows/CI%20-%20Test/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
+Proyecto | GitHub - CI | Sonarcloud
+-- | -- | --
+Front-end-angular | [![Angular - Build](https://github.com/miw-upm/betca-tpv-angular/workflows/Angular%20-%20Build/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
+Back-end-user | [![TPV User](https://github.com/miw-upm/betca-tpv-user/workflows/TPV%20User/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
+Back-end-core | [![CI - Test](https://github.com/miw-upm/betca-tpv-core/workflows/CI%20-%20Test/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
 
 ## :octocat: Repositorios
 * [Front-end-angular](https://github.com/miw-upm/betca-tpv-angular)
@@ -199,6 +198,8 @@ export class ArticlesComponent {
 }
 ```
 
+---
+
 ### Anexo. Preparación del proyecto y ecosistema
 
 #### Instalaciones de herramientas
@@ -207,16 +208,15 @@ export class ArticlesComponent {
    * C:\Users\*\AppData\Roaming\npm-cache
 
 2. Instalar Node, todo estándar
-   * node  --version  `v14.15.0`
-   * npm –version `6.14.8`
+   * node  --version  ?`v14.15.0`
+   * npm –version ?`6.14.8`
    * npm list ?muestra todas las dependencias instaladas
    * npm list &lt;dependence> ?muestra la dependencia especificada
    * npm update –g
    
 3. Instalar Angular CLI
-   * npm install -g @angular/cli `11.0.1`
-   * npm install -g @angular/cli@latest
-   * ng –-version
+   * npm install -g @angular/cli 
+   * ng –-version ?`11.0.1`
 
 4. Crear una nueva aplicación
    * ng new &lt;app>
@@ -228,20 +228,27 @@ export class ArticlesComponent {
    
 6. Instalar express:
    * npm i express  ?i:install
-   * npm list express `4.17.1`
+   * npm list express ?`4.17.1`
    * Crear el fichero `server.js`
    * ng build  --prod
-   * node server.js
+   * node server.js ?arrancar sobre express
    
 7. Instalar Material + Flex
-   * ng add @angular/material
+   * ng add @angular/material  ?(Indigo/Pink, Yes & Yes)
    * npm i @angular/flex-layout
-   * npm list @angular/material `11.0.0`
-   * npm list @angular/flex-layout `11.0.0-beta.33`
+   * npm list @angular/material ?`11.0.0`
+   * npm list @angular/flex-layout ?`11.0.0-beta.33`
    
 8. Instalar Jwt
    * npm i @auth0/angular-jwt
-   * npm list @auth0/angular-jwt `5.0.1`
+   * npm list @auth0/angular-jwt ?`5.0.1`
+
+Otros comandos
+* `>ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* `>ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* `>ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* `>ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* `>ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 #### Versionado: **package.json**
 ```json
@@ -253,7 +260,7 @@ export class ArticlesComponent {
 `~: versión mas cercana posible, ^: versión compatible mas alta`
 #### Perfil: **carpeta _environments_**
 
-En el fichero `tsconfig`, habilitar las opciones de compilación:
+En el fichero `tsconfig`, habilitar las opciones de compilación siguientes, esto nos permite importar valores de los ficheros *.json.
 ```json
 {
   "compilerOptions": {
@@ -333,6 +340,11 @@ Conexión con **Heroku**:
 ```
 
 ## Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
-
+### Paquetes
+![](docs/back-end-user-packages.png)
+### Clases
+![](docs/back-end-user-classes.png)
+### Carpetas
+![](docs/back-end-user-folders.png)
 ## Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
 
