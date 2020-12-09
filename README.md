@@ -1,23 +1,25 @@
 # [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
-# Back-end con Tecnologías de Código Abierto: **SPRING**
-> Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación completa realizada con un Front-end: Angular
- y dos Back-ends: Spring. El Back-end-user se desarrolla con programación síncrona y Postgresql. El Back-end-core se
- realiza con programación reactiva y MongoDB.
+# Back-end con Tecnologías de Código Abierto: **SPRING & PYTHON**
+> Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación completa realizada con un Front-end con Angular, 
+dos Back-ends con Spring y un Back-end con Python. El Back-end-user se desarrolla con programación síncrona y Postgresql. El Back-end-core se
+ realiza con programación reactiva y MongoDB. El Back-end-customer-support con programación síncrona y MongoDB
 
 ## Tecnologías necesarias
-`Java` `Maven` `Spring-Boot` `Reactor` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `Travis-CI` `Sonarcloud` `Better Code Hub` `Heroku`
+`Java` `Maven` `Spring-Boot` `Reactor` `Python` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `Travis-CI` `Sonarcloud` `Better Code Hub` `Heroku`
 
 ## Estado del código
 Proyecto | GitHub - CI | Sonarcloud
 -- | -- | --
 Front-end-angular | [![Angular - Build](https://github.com/miw-upm/betca-tpv-angular/workflows/Angular%20-%20Build/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
-Back-end-user | [![TPV User](https://github.com/miw-upm/betca-tpv-user/workflows/TPV%20User/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
-Back-end-core | [![CI - Test](https://github.com/miw-upm/betca-tpv-core/workflows/CI%20-%20Test/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
+Back-end-user | [![Spring User - Tests](https://github.com/miw-upm/betca-tpv-user/workflows/Spring%20User%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-user&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-user)
+Back-end-core | [![Spring Core - Tests](https://github.com/miw-upm/betca-tpv-core/workflows/Spring%20Core%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
+Back-end-customer-support | [![Python Customer Support - Tests](https://github.com/miw-upm/betca-tpv-customer-support/workflows/Python%20Customer%20Support%20-%20Tests/badge.svg)](https://github.com/miw-upm/betca-tpv-customer-support/actions) | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-customer-support&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-customer-support)
 
 ## :octocat: Repositorios
 * [Front-end-angular](https://github.com/miw-upm/betca-tpv-angular)
 * [Back-end-user](https://github.com/miw-upm/betca-tpv-user)
 * [Back-end-core](https://github.com/miw-upm/betca-tpv-core)
+* [Back-end-customer-support](https://github.com/miw-upm/betca-tpv-customer-support)
 
 ## :gear: Instalación del proyecto
 1. Clonar repositorios, **mediante consola**:
@@ -39,20 +41,31 @@ betca-tpv-angular> npm install
 > git clone https://github.com/miw-upm/betca-tpv-core
 ```   
 
+   * betca-tpv-customer-support
+```sh
+> cd <folder path>
+> git clone https://github.com/miw-upm/betca-tpv-customer-support
+> cd betca-tpv-customer-support
+> venv\Scripts\activate.bat
+(venv) > pip install -r requirements.txt
+```
+
 2. Importar el proyecto `betca-tpv-angular` mediante **WebStorm** 
    * **Open**, y seleccionar la carpeta del proyecto.
 3. Importar los proyectos `betca-tpv-user` & `betca-tpv-core` mediante **IntelliJ** 
    1. **Import Project**, y seleccionar la carpeta del proyecto.
    1. Marcar **Create Project from external model**, elegir **Maven**.
    1. **Next** … **Finish**.
-
-4. Ejecución
+4. Importar el proyecto `betca-tpv-customer-support` mediante **PyCharm**
+   * **Open**, y seleccionar la carpeta del proyecto.
+5. Ejecución
    * Ejecución de test: se utiliza MongoDB embebido y H2 embebido
    * Ejecución en local:
-      1. BBDD. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv`, y el motor de 
-      Postgresql: `spring.datasource.url=jdbc:postgresql://localhost:5432/tpv`
+      1. BBDD. Se debe tener arrancado el motor de MongoDB: `mongodb://localhost:27017/tpv` & `mongodb://localhost:27017/tpv2`,
+      y el motor de Postgresql: `spring.datasource.url=jdbc:postgresql://localhost:5432/tpv`
       2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> mvn clean spring-boot:run`  
-      3. Angular. Ejecutar mediante linea de comand: `> ng serve`  
+      3. Python. Ejecutar mediante linea de comando: `> uvicorn src.main:app --reload`
+      4. Angular. Ejecutar mediante linea de comand: `> ng serve`  
 
 # :book: Documentación del proyecto
 > Este proyecto es la práctica TPV desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`,
@@ -344,7 +357,9 @@ Conexión con **Heroku**:
 ![](docs/back-end-user-packages.png)
 ### Clases
 ![](docs/back-end-user-classes.png)
-### Carpetas
-![](docs/back-end-user-folders.png)
-## Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
 
+## Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
+### Paquetes
+![](docs/back-end-core-packages.png)
+### Clases
+![](docs/back-end-core-classes.png)
