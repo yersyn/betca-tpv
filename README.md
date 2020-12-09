@@ -207,19 +207,19 @@ export class ArticlesComponent {
    * C:\Users\*\AppData\Roaming\npm-cache
 
 2. Instalar Node, todo estándar
-   * node  --version  -->v14.15.0
-   * npm –version -->6.14.8
-   * npm list // muestra todas las dependencias instaladas
-   * npm list <dependence> // muestra la dependencia especificada
+   * node  --version  `v14.15.0`
+   * npm –version `6.14.8`
+   * npm list ?muestra todas las dependencias instaladas
+   * npm list &lt;dependence> ?muestra la dependencia especificada
    * npm update –g
    
 3. Instalar Angular CLI
-   * npm install -g @angular/cli -->11.0.1
+   * npm install -g @angular/cli `11.0.1`
    * npm install -g @angular/cli@latest
    * ng –-version
 
 4. Crear una nueva aplicación
-   * ng new <app>
+   * ng new &lt;app>
 
 5. Ejecutar aplicación:
    * cd &lt;app>
@@ -227,8 +227,8 @@ export class ArticlesComponent {
    * Navegador: http://localhost:4200/
    
 6. Instalar express:
-   * npm i express  // i:install
-   * npm list express -->4.17.1
+   * npm i express  ?i:install
+   * npm list express `4.17.1`
    * Crear el fichero `server.js`
    * ng build  --prod
    * node server.js
@@ -236,12 +236,12 @@ export class ArticlesComponent {
 7. Instalar Material + Flex
    * ng add @angular/material
    * npm i @angular/flex-layout
-   * npm list @angular/material -->11.0.0
-   * npm list @angular/flex-layout -->11.0.0-beta.33
+   * npm list @angular/material `11.0.0`
+   * npm list @angular/flex-layout `11.0.0-beta.33`
    
 8. Instalar Jwt
    * npm i @auth0/angular-jwt
-   * npm list @auth0/angular-jwt -->5.0.1
+   * npm list @auth0/angular-jwt `5.0.1`
 
 #### Versionado: **package.json**
 ```json
