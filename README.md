@@ -1,13 +1,13 @@
-## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
-## Back-end con Tecnologías de Código Abierto: **SPRING**
+# [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
+# Back-end con Tecnologías de Código Abierto: **SPRING**
 > Proyecto TPV. Este proyecto es un apoyo docente de la asignatura. Es una aplicación completa realizada con un Front-end: Angular
  y dos Back-ends: Spring. El Back-end-user se desarrolla con programación síncrona y Postgresql. El Back-end-core se
  realiza con programación reactiva y MongoDB.
 
-### Tecnologías necesarias
+## Tecnologías necesarias
 `Java` `Maven` `Spring-Boot` `Reactor` `Angular` `MondoDB` `JPA` `SQL` `GitHub` `Travis-CI` `Sonarcloud` `Better Code Hub` `Heroku`
 
-### Estado del código
+## Estado del código
 * Front-end-angular: [![Angular - Build](https://github.com/miw-upm/betca-tpv-angular/workflows/Angular%20-%20Build/badge.svg)](https://github.com/miw-upm/betca-tpv-angular/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-angular&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-angular)
 * Back-end-user:[![TPV User](https://github.com/miw-upm/betca-tpv-user/workflows/TPV%20User/badge.svg)](https://github.com/miw-upm/betca-tpv-user/actions)
@@ -15,12 +15,12 @@
 * Back-end-core:[![CI - Test](https://github.com/miw-upm/betca-tpv-core/workflows/CI%20-%20Test/badge.svg)](https://github.com/miw-upm/betca-tpv-core/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Abetca-tpv-core&metric=alert_status)](https://sonarcloud.io/dashboard?id=es.upm.miw%3Abetca-tpv-core) 
 
-### :octocat: Repositorios
+## :octocat: Repositorios
 * [Front-end-angular](https://github.com/miw-upm/betca-tpv-angular)
 * [Back-end-user](https://github.com/miw-upm/betca-tpv-user)
 * [Back-end-core](https://github.com/miw-upm/betca-tpv-core)
 
-### :gear: Instalación del proyecto
+## :gear: Instalación del proyecto
 1. Clonar repositorios, **mediante consola**:
    * betca-tpv-angular
 ```sh
@@ -55,24 +55,24 @@ betca-tpv-angular> npm install
       2. Spring. Ejecutar mediante linea de comando en ambos proyectos: `> mvn clean spring-boot:run`  
       3. Angular. Ejecutar mediante linea de comand: `> ng serve`  
 
-## :book: Documentación del proyecto
+# :book: Documentación del proyecto
 > Este proyecto es la práctica TPV desarrollada de forma colaborativa por todos los alumnos. Se parte de la versión `core`,
 ya implementada, y se pretende ampliar con un conjunto de mejoras. Un **T**erminal **P**unto de **V**enta
 es un sistema informático que gestiona el proceso de venta mediante una interfaz accesible para los vendedores o compradores.
 Permite la creación e impresión del recibo ticket o factura de venta —con los detalles de las referencias y precios— de los artículos vendidos,
 actualiza los cambios en el nivel de existencias de mercancías (STOCK) en la base de datos... Además tiene la parte de venta on-line.
 
-### Interfaz de Usuario
+## Interfaz de Usuario
 * [App TPV desplegada en Heroku](https://betca-tpv-angular.herokuapp.com)
 
 ![](./docs/betca-tpv.png)
 
-### Arquitectura del Front-end: Angular
-#### Carpetas
+## Arquitectura del Front-end: Angular
+### Carpetas
 ![](docs/front-end-folders.png)
-#### Módulos
+### Módulos
 ![](docs/front-end-modules.png)
-#### Seguridad
+### Seguridad
 
 Se plantea en dos procesos:
 
@@ -147,9 +147,9 @@ const routes: Routes = [
 export class ShopRoutingModule {}
 ```
 
-#### Código
+### Código
 
-##### Uso del Pipe `async`
+#### Uso del Pipe `async`
 
 ```html
 <p><button mat-raised-button (click)=requestSync() >Sync </button> {{sync}}</p>
@@ -172,7 +172,167 @@ export class InputOverviewExample {
 }
 ```
 
-### Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
+### Crud Component
+```html
+<app-crud (create)="create()" (read)="read($event)" (update)="update($event)"
+          [data]="articles" [deleteAction]="false" [title]="title"></app-crud>
+```
+```typescript
+export class ArticlesComponent {
+  title = 'Articles management';
+  articles = of([]);
+  create(): void {
+    this.dialog.open(ArticleCreationUpdatingDialogComponent);
+  }
+  read(article: Article): void {
+    this.dialog.open(ReadDetailDialogComponent, {
+      data: {
+        title: 'Article Details',
+        object: this.articleService.read(article.barcode)
+      }
+    });
+  }
+  update(article: Article): void {
+    this.articleService.read(article.barcode)
+      .subscribe(fullArticle => this.dialog.open(ArticleCreationUpdatingDialogComponent, {data: fullArticle}));
+  }
+}
+```
 
-### Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
+### Anexo. Preparación del proyecto y ecosistema
+
+#### Instalaciones de herramientas
+1. Desinstalar node & borrado de carpetas, si procede:
+   * C:\Users\*\AppData\Roaming\npm
+   * C:\Users\*\AppData\Roaming\npm-cache
+
+2. Instalar Node, todo estándar
+   * node  --version  v14.15.0
+   * npm –version  6.14.8
+   * npm list // muestra todas las dependencias instaladas
+   * npm list <dependence> // muestra la dependencia especificada
+   * npm update –g
+   
+3. Instalar Angular CLI
+   * npm install -g @angular/cli   11.0.1
+   * npm install -g @angular/cli@latest
+   * ng –-version
+
+4. Crear una nueva aplicación
+   * ng new <app>
+
+5. Ejecutar aplicación:
+   * cd &lt;app>
+   * ng serve
+   * Navegador: http://localhost:4200/
+   
+6. Instalar express:
+   * npm i express  // i:install
+   * npm list express    4.17.1
+   * Crear el fichero `server.js`
+   * ng build  --prod
+   * node server.js
+   
+7. Instalar Material + Flex
+   * ng add @angular/material
+   * npm i @angular/flex-layout
+   * npm list @angular/material   11.0.0
+   * npm list @angular/flex-layout   11.0.0-beta.33
+   
+8. Instalar Jwt
+   * npm i @auth0/angular-jwt
+   * npm list @auth0/angular-jwt   5.0.1
+
+#### Versionado: **package.json**
+```json
+{
+  "name": "betca-tpv-angular",
+  "version": "4.1.0-SNAPSHOT",
+}
+```
+`~: versión mas cercana posible, ^: versión compatible mas alta`
+#### Perfil: **carpeta _environments_**
+
+En el fichero `tsconfig`, habilitar las opciones de compilación:
+```json
+{
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
+}
+```
+`enviroments.ts`
+```typescript
+import {name, version} from '../../package.json';
+export const environment = {
+  production: false,
+  NAME: name,
+  VERSION: version,
+  REST_USER: 'http://localhost:8081',
+  REST_CORE: 'http://localhost:8082'
+};
+```
+`enviroments.prod.ts`
+```typescript
+import {name, version} from '../../package.json';
+export const environment = {
+  production: true,
+  NAME: name,
+  VERSION: version,
+  REST_USER: 'https://betca-tpv-user.herokuapp.com',
+  REST_CORE: 'https://betca-tpv-core.herokuapp.com'
+```
+### Rutas absolutas: @*
+
+En el fichero `tsconfig`, habilitar las opciones de compilación:
+```json
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@env": ["environments/environment"],
+      "@shared/*": ["app/shared/*"],
+      "@core/*": ["app/core/*"]
+    }
+  }
+}
+```
+### Scripts: **package.json**
+```json
+{
+  "scripts": {
+    "heroku-postbuild": "ng build --prod",
+    "build-prod": "ng build --prod",
+    "start": "node server.js"
+  }
+}
+```
+### GitHub Actions: CI & CD
+Se establecen los workflows en la carpeta: `.github/workflows/*.yml`
+
+Conexión con **Sonarcloud**:
+1. Se debe crear el proyecto en sonarcloud: `Administration/Projects Management`, botón `Create Project`. 
+
+2. Configurar la rama por defecto, renombrar `master` si esta no es la rama por defecto: `Administración/Branches and Pull Requests`.
+Renombrar las `long living branch: (master|develop|release-).*`
+
+3. Se deben establecer la contraseña: `secrets.SONAR_TOKEN` en en proyecto de GitHub, `settings/Secrets`
+Para `Sonarcloud`, se debe crear el fichero: `sonar-project.properties`.
+
+Conexión con **Heroku**:
+1. Crear la aplicación en Heroku.
+2. Se deben establecer la contraseña: `secrets.HEROKU_API_KEY` en en proyecto de GitHub.   
+3. Deben existir los scripts para construcción y arranque con `express`:
+```json
+{
+  "scripts": {
+    "heroku-postbuild": "ng build --prod",
+    "start": "node server.js"
+  }
+}
+```
+
+## Arquitectura del Back-end: Spring-User mediante Arquitectura por Capas
+
+## Arquitectura del Front-end: Spring-Core mediante Arquitectura Hexagonal
 
